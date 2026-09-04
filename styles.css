@@ -1,0 +1,60 @@
+* { box-sizing: border-box; }
+:root { color-scheme: dark; font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; color: #d4d8d5; background: #090b0b; }
+body { margin: 0; }
+.layout { min-height: 100svh; display: grid; grid-template-columns: auto 280px; gap: 42px; align-content: center; justify-content: center; padding: 24px; }
+.monitor { background: #000; width: min(570px, calc((100svh - 48px) * .75), calc(100vw - 370px)); aspect-ratio: 3 / 4; align-self: center; }
+canvas { display: block; width: 100%; height: 100%; image-rendering: pixelated; image-rendering: crisp-edges; outline: none; touch-action: none; }
+canvas:focus-visible { outline: 1px solid #6e9687; outline-offset: 5px; }
+aside { max-height: calc(100svh - 48px); overflow: auto; padding: 8px 1px; align-self: center; font-size: 12px; }
+.eyebrow { color: #81918a; letter-spacing: 3px; font-size: 10px; }
+h1 { color: #ead047; letter-spacing: 5px; font-size: 29px; margin: 9px 0 6px; }
+p { line-height: 1.6; }
+.muted { color: #8a9390; margin-top: 0; }
+.offline { color: #61b993; font-size: 11px; margin: 19px 0; }
+.offline span { margin-right: 6px; font-size: 8px; }
+button, select, input { font: inherit; }
+button { color: #c6cdc9; border: 1px solid #37413c; background: #151b18; border-radius: 3px; padding: 10px 9px; cursor: pointer; touch-action: none; }
+button:hover { background: #26342c; border-color: #6b8475; }
+button:focus-visible, summary:focus-visible { outline: 2px solid #ead047; outline-offset: 3px; }
+button:active, button.held { background: #546b55; }
+.primary { width: 100%; color: #171d12; background: #d4d68e; border-color: #d4d68e; font-weight: bold; font-size: 13px; }
+.primary:hover { background: #e3e7a5; }
+.toolbar { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 8px; }
+.toolbar button { font-size: 10px; }
+.status { color: #d4d68e; min-height: 16px; font-size: 11px; margin: 17px 0; }
+.keys { border-top: 1px solid #29332d; padding-top: 10px; }
+.keys div { display:flex; justify-content:space-between; margin: 11px 0; }
+dt { color: #cbd6cf; } dd { color:#8f9b94; margin:0; }
+.hint { font-size: 10px; color: #92a198; line-height: 1.65; }
+.shield-meter { display: flex; gap: 10px; align-items: center; color: #94c9b2; font-size: 10px; margin: 18px 0; }
+progress { width: 82px; height: 5px; accent-color:#79b99c; margin-left:auto; }
+.audio-panel { border-top: 1px solid #29332d; padding-top: 15px; }
+.audio-row { display:flex; gap: 10px; align-items:center; }
+.audio-row button { font-size: 10px; padding: 8px; white-space: nowrap; }
+.audio-row label { font-size: 10px; display:grid; gap: 6px; }
+input[type=range] { width: 100%; min-width: 40px; accent-color:#94bfa1; }
+details { border-top: 1px solid #29332d; padding-top: 15px; margin-top: 14px; font-size: 10px; }
+summary { cursor:pointer; color:#9eada3; }
+.practice-label { display: grid; gap: 8px; margin: 10px 0; }
+select { width:100%; background:#151b18; color:#d5ddd7; border:1px solid #37413c; padding:8px; }
+.sound-tests { display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-top:12px; }
+.sound-tests button { font-size:10px; }
+footer { margin-top: 22px; font-size:9px; line-height:1.8; color:#75867b; }
+a { color:#9cab9f; text-underline-offset:3px; }
+.touch-controls { display:none; }
+.monitor:fullscreen { width:100vw; height:100vh; aspect-ratio:auto; display:flex; justify-content:center; background:#000; }
+.monitor:fullscreen canvas { width:min(100vw,75vh); height:100vh; }
+@media (max-width: 800px) {
+  .layout { display:flex; flex-direction:column; align-items:center; gap:16px; padding:12px; }
+  .monitor { width:min(94vw,calc((100svh - 120px) * .75)); }
+  aside { width:min(440px,94vw); max-height:none; overflow:visible; order:3; }
+  header { display:none; }
+  .offline { margin:8px 0; }
+  .touch-controls { display:flex; gap:8px; width:min(440px,94vw); order:2; }
+  .touch-controls button { flex:1; user-select:none; -webkit-user-select:none; min-height:48px; font-size:12px; }
+  .fire { color:#e7cf43; }
+}
+@media (pointer: coarse) and (min-width: 801px) {
+  .touch-controls { display:flex; gap:8px; grid-column:1/-1; justify-content:center; }
+  .touch-controls button { width:100px; min-height:46px; }
+}

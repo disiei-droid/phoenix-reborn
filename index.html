@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' file:; script-src 'self' file:; style-src 'self' file:; img-src 'self' file: data:; connect-src 'none'; object-src 'none'; base-uri 'none'">
+  <title>Phoenix · Arcade offline</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="layout">
+    <section class="monitor" aria-label="Pantalla de la recreativa">
+      <canvas id="game" width="208" height="256" tabindex="0" aria-label="Phoenix: flechas para mover, espacio para disparar, Z para escudo">Tu navegador necesita Canvas 2D.</canvas>
+    </section>
+    <aside>
+      <header><span class="eyebrow">ARCADE · 1980</span><h1>PHOENIX</h1><p class="muted">Recreación independiente</p></header>
+      <p class="offline"><span aria-hidden="true">●</span> Funciona sin conexión</p>
+      <button id="start" class="primary" type="button">Jugar · Enter</button>
+      <div class="toolbar"><button id="pause" type="button">Pausa · P</button><button id="fullscreen" type="button">Pantalla completa</button></div>
+      <p id="status" class="status" role="status">Listo para jugar</p>
+      <dl class="keys"><div><dt>← → / A D</dt><dd>Mover</dd></div><div><dt>Espacio</dt><dd>Disparar</dd></div><div><dt>Z / ↓</dt><dd>Escudo</dd></div></dl>
+      <p class="hint">El escudo te inmoviliza, pero puedes seguir disparando. Después necesita cinco segundos de recarga.</p>
+      <div class="shield-meter"><span id="shield-label">Escudo listo</span><progress id="shield-meter" max="1" value="1"></progress></div>
+      <section class="audio-panel" aria-label="Sonido">
+        <div class="audio-row"><button id="mute" type="button" aria-pressed="false">Sonido: sí · M</button><label>Volumen <input id="volume" aria-label="Volumen" type="range" min="0" max="100" value="30"></label></div>
+        <p id="audio-status" class="hint">El sonido se activa al jugar.</p>
+      </section>
+      <details><summary>Práctica y prueba de sonido</summary>
+        <p class="hint">La práctica no guarda récords.</p>
+        <label class="practice-label">Fase <select id="practice-stage" aria-label="Fase"><option value="1">1 · Pájaros amarillos</option><option value="2">2 · Pájaros verdes</option><option value="3">3 · Phoenix azules</option><option value="4">4 · Phoenix rosas</option><option value="5">5 · Fortaleza</option></select></label>
+        <button id="practice" type="button">Iniciar práctica</button>
+        <div class="sound-tests"><button data-sound="shoot" type="button">Disparo</button><button data-sound="hit" type="button">Impacto</button><button data-sound="shield" type="button">Escudo</button><button id="stop-audio" type="button">Parar sonidos</button></div>
+      </details>
+      <footer>Sin ROMs, instalaciones ni servicios externos.<br><a href="README.md">Instrucciones</a> · <a href="REFERENCIAS.md">Referencia y diferencias</a></footer>
+    </aside>
+    <nav class="touch-controls" aria-label="Controles táctiles"><button data-key="ArrowLeft" aria-label="Mover a la izquierda">◀</button><button data-key="ArrowRight" aria-label="Mover a la derecha">▶</button><button data-key="KeyZ">ESCUDO</button><button data-key="Space" class="fire">FUEGO</button></nav>
+  </main>
+  <script src="core.js"></script>
+  <script src="render.js"></script>
+  <script src="audio.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
